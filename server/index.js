@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('matriculasdb');
-    collection = db.collection('matriculas');
+    const db = client.db('musicasdb');
+    collection = db.collection('musicas');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -27,47 +27,47 @@ connectDB();
 app.use(express.json()); 
 
 
-app.post('/matriculas', async (req, res) => {
+app.post('/musicas', async (req, res) => {
   try {
     const novaMatricula = req.body;
 
     result = await collection.insertOne(novaMatricula)
     
-    res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'Música criada com sucesso', matriculaId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao criar Música', error: err });
   }
 });
 
-app.get('/matriculas', async (req, res) => {
+app.get('/musicas', async (req, res) => {
   try {
-    const matriculas = await collection.find().toArray();
+    const musicas = await collection.find().toArray();
 
-    res.status(200).json(matriculas);
+    res.status(200).json(musicas);
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrículas', error: err });
+    res.status(500).json({ message: 'Erro ao buscar Músicas', error: err });
   }
 });
 
 const { ObjectId } = require('mongodb');
 
-app.get('/matriculas/:id', async (req, res) => {
+app.get('/musicas/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
     const matricula = await collection.findOne({_id: newId})
 
     if (!matricula) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Música não encontrada' });
     } else {
       res.status(200).json(matricula);
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao buscar Música', error: err });
   }
 });
 
-app.put('/matriculas/:id', async (req, res) => {
+app.put('/musicas/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
@@ -76,16 +76,16 @@ app.put('/matriculas/:id', async (req, res) => {
     
 
     if (result.matchedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Música não encontrada' });
     } else {
-      res.status(200).json({ message: 'Matrícula atualizada com sucesso' });
+      res.status(200).json({ message: 'Música atualizada com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao atualizar Música', error: err });
   }
 });
 
-app.delete('/matriculas/:id', async (req, res) => {
+app.delete('/musicas/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
@@ -93,12 +93,12 @@ app.delete('/matriculas/:id', async (req, res) => {
 
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Música não encontrada' });
     } else {
-      res.status(200).json({ message: 'Matrícula excluída com sucesso' });
+      res.status(200).json({ message: 'Música excluída com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao excluir matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao excluir Música', error: err });
   }
 });
 

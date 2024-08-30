@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import '../globals.css';
 
 export default function ReadMatriculas() {
-  const [matriculas, setMatriculas] = useState([]);
+  const [musicas, setMusicas] = useState([]);
 
 
   useEffect(() => {
     const fetchMatriculas = async () => {
       try {
-        const response = await fetch('http://localhost:5000/matriculas');
+        const response = await fetch('http://localhost:5000/musicas');
         const data = await response.json();
-        setMatriculas(data);
+        setMusicas(data);
       } catch (error) {
         console.error('Erro ao buscar as matrículas:', error);
       }
@@ -21,12 +21,12 @@ export default function ReadMatriculas() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/matriculas/${id}`, {
+      const response = await fetch(`http://localhost:5000/musicas/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
 
-        setMatriculas(matriculas.filter((matricula) => matricula._id !== id));
+        setMusicas(musicas.filter((musicas) => musicas._id !== id));
         alert('Matrícula excluída com sucesso!');
       } else {
         alert('Erro ao excluir matrícula.');
@@ -38,26 +38,26 @@ export default function ReadMatriculas() {
 
   return (
     <div className='container'>
-      <h2>Lista de Matrículas</h2>
+      <h2>Lista de Músicas</h2>
       <table  className="table-container" border="1">
         <thead>
           <tr>
-            <th>Código Matrícula</th>
-            <th>Nome do Aluno</th>
-            <th>Turma</th>
-            <th>Curso</th>
+            <th>Código Músicas</th>
+            <th>Nome da Música</th>
+            <th>Album</th>
+            <th>Autor</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {matriculas.map((matricula) => (
-            <tr key={matricula._id}>
-              <td>{matricula._id}</td>
-              <td>{matricula.aluno}</td>
-              <td>{matricula.turma}</td>
-              <td>{matricula.curso}</td>
+          {musicas.map((musicas) => (
+            <tr key={musicas._id}>
+              <td>{musicas._id}</td>
+              <td>{musicas.musicas}</td>
+              <td>{musicas.album}</td>
+              <td>{musicas.autor}</td>
               <td>
-                <button onClick={() => handleDelete(matricula._id)}>Excluir</button>
+                <button onClick={() => handleDelete(musicas._id)}>Excluir</button>
               </td>
             </tr>
           ))}

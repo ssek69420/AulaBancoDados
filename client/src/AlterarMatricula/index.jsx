@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom';
 
 export default function UpdateMatricula() {
   const [id, setId] = useState('');
-  const [aluno, setAluno] = useState('');
-  const [turma, setTurma] = useState('');
-  const [curso, setCurso] = useState('');
+  const [musicas, setMusicas] = useState('');
+  const [album, setAlbum] = useState('');
+  const [autor, setAutor] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const atualizacao = { aluno, turma, curso };
+    const atualizacao = { musicas, album, autor };
 
     try {
-      const response = await fetch(`http://localhost:5000/matriculas/${id}`, {
+      const response = await fetch(`http://localhost:5000/musicas/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -22,49 +22,49 @@ export default function UpdateMatricula() {
         body: JSON.stringify(atualizacao),
       });
       if (response.ok) {
-        alert('Matrícula atualizada com sucesso!');
+        alert('Música atualizada com sucesso!');
         navigate("/matriculas");
       } else {
-        alert('Erro ao atualizar matrícula.');
+        alert('Erro ao atualizar música.');
       }
     } catch (error) {
-      console.error('Erro ao atualizar matrícula:', error);
+      console.error('Erro ao atualizar música:', error);
     }
   };
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Atualizar Matrícula</h2>
+      <h2>Atualizar Música</h2>
       <input
         type="text"
-        placeholder="ID da Matrícula"
+        placeholder="ID da Música"
         value={id}
         onChange={(e) => setId(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Nome do Aluno"
-        value={aluno}
-        onChange={(e) => setAluno(e.target.value)}
+        placeholder="Nome da(s) música(s)"
+        value={musicas}
+        onChange={(e) => setMusicas(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Turma"
-        value={turma}
-        onChange={(e) => setTurma(e.target.value)}
+        placeholder="Album"
+        value={album}
+        onChange={(e) => setAlbum(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Curso"
-        value={curso}
-        onChange={(e) => setCurso(e.target.value)}
+        placeholder="Autor"
+        value={autor}
+        onChange={(e) => setAutor(e.target.value)}
         required
       />
-      <button type="submit">Atualizar Matrícula</button>
+      <button type="submit">Atualizar Música</button>
     </form>
     </div>
   );
