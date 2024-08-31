@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../globals.css';
+import Foot from '../Footer/Foot';
+import Head from '../Header/Head';
 
 export default function Home() {
     return (
-<div className="container-everything">
-        <div className="container-musicsystem">
-            <h2 className='musicSystem'>SISTEMA DE MUSICAS</h2>
-            </div>
+<>
+    <Head/>
         <div className='container'>
             <div className="card-container">
                 <Link to="/matricula/cadastrar" className="card">
@@ -20,6 +20,7 @@ export default function Home() {
                 </Link>
             </div>
         </div>
-</div>
+    <Foot/>
+</>
     );
 }

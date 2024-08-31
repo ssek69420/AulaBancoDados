@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import '../globals.css';
+import Head from '../Header/Head';
 
 export default function ReadMatriculas() {
   const [musicas, setMusicas] = useState([]);
-
 
   useEffect(() => {
     const fetchMatriculas = async () => {
@@ -25,7 +25,6 @@ export default function ReadMatriculas() {
         method: 'DELETE',
       });
       if (response.ok) {
-
         setMusicas(musicas.filter((musicas) => musicas._id !== id));
         alert('Matrícula excluída com sucesso!');
       } else {
@@ -37,6 +36,8 @@ export default function ReadMatriculas() {
   };
 
   return (
+    <>
+    <Head/>
     <div className='container'>
       <h2>Lista de Músicas</h2>
       <table  className="table-container" border="1">
@@ -64,5 +65,6 @@ export default function ReadMatriculas() {
         </tbody>
       </table>
     </div>
+  </>
   );
 }
