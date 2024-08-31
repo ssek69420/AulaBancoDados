@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Head from '../Header/Head';
+
 
 export default function UpdateMatricula() {
   const [id, setId] = useState('');
@@ -33,6 +35,8 @@ export default function UpdateMatricula() {
   };
 
   return (
+    <>
+    <Head text={'EDITAR MUSICA'}/>
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
       <h2>Atualizar Música</h2>
@@ -67,5 +71,6 @@ export default function UpdateMatricula() {
       <button type="submit">Atualizar Música</button>
     </form>
     </div>
+    </>
   );
 }

@@ -37,7 +37,7 @@ export default function ReadMatriculas() {
 
   return (
     <>
-    <Head/>
+    <Head text={'LISTA DE MUSICAS'}/>
     <div className='container'>
       <h2>Lista de Músicas</h2>
       <table  className="table-container" border="1">

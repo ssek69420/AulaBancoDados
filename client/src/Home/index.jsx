@@ -6,7 +6,7 @@ import Head from '../Header/Head';
 export default function Home() {
     return (
 <>
-    <Head/>
+    <Head text={'SISTEMA DE MUSICAS'}/>
         <div className='container'>
             <div className="card-container">
                 <Link to="/matricula/cadastrar" className="card">

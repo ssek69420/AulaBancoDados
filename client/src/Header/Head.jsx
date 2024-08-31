@@ -1,7 +1,7 @@
-export default function Head(){
+export default function Head({text}){
     return(
         <div className="container-musicsystem">
-            <h2 className='musicSystem'>SISTEMA DE MUSICAS</h2>
+            <h2 className='musicSystem'>{text}</h2>
         </div>
     )
 }

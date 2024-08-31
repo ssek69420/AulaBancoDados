@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../globals.css';
 import { useNavigate } from 'react-router-dom';
-
+import Head from '../Header/Head';
 
 export default function CreateMatricula() {
   const [musicas, setMusicas] = useState('');
@@ -36,6 +36,8 @@ export default function CreateMatricula() {
   };
 
   return (
+    <>
+    <Head text={'REGISTRO DE MUSICAS'}/>
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
       <h2>Criar Música</h2>
@@ -63,5 +65,6 @@ export default function CreateMatricula() {
       <button type="submit">Criar Música</button>
     </form>
     </div>
+    </>
   );
 }
