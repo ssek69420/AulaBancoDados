@@ -3,19 +3,23 @@ import '../globals.css';
 
 export default function Home() {
     return (
+<div className="container-everything">
+        <div className="container-musicsystem">
+            <h2 className='musicSystem'>SISTEMA DE MUSICAS</h2>
+            </div>
         <div className='container'>
-            <h2>Sistema Acadêmico</h2>
             <div className="card-container">
                 <Link to="/matricula/cadastrar" className="card">
-                    <div>Registrar Matrícula</div>
+                    <div>Registrar Musica</div>
                 </Link>
                 <Link to="/matriculas" className="card">
-                    <div>Lista de Matrícula</div>
+                    <div>Lista de Musicas</div>
                 </Link>
                 <Link to="/matriculas/alterar" className="card">
-                    <div>Editar Matrícula</div>
+                    <div>Editar Musica</div>
                 </Link>
             </div>
         </div>
+</div>
     );
 }
