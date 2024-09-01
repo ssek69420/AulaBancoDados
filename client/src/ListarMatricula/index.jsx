@@ -12,7 +12,7 @@ export default function ReadMatriculas() {
         const data = await response.json();
         setMusicas(data);
       } catch (error) {
-        console.error('Erro ao buscar as matrículas:', error);
+        console.error('Erro ao buscar as musicas:', error);
       }
     };
 
@@ -26,12 +26,12 @@ export default function ReadMatriculas() {
       });
       if (response.ok) {
         setMusicas(musicas.filter((musicas) => musicas._id !== id));
-        alert('Matrícula excluída com sucesso!');
+        alert('musica excluída com sucesso!');
       } else {
-        alert('Erro ao excluir matrícula.');
+        alert('Erro ao excluir musica.');
       }
     } catch (error) {
-      console.error('Erro ao excluir matrícula:', error);
+      console.error('Erro ao excluir musica:', error);
     }
   };
 
